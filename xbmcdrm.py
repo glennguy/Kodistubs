@@ -5,11 +5,12 @@
 """
 Kodi's DRM class
 """
+from __future__ import absolute_import, division, unicode_literals
 from typing import Union, Dict
 
 __kodistubs__ = True
 
-str_type = Union[str, unicode]
+str_type = Union[str]
 
 
 class CryptoSession(object):

@@ -5,11 +5,12 @@
 """
 Kodi's addon class
 """
+from __future__ import absolute_import, division, unicode_literals
 from typing import Union
 
 __kodistubs__ = True
 
-str_type = Union[str, unicode]
+str_type = Union[str]
 
 
 class Addon(object):
