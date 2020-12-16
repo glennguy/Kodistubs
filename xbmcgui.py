@@ -2011,26 +2011,21 @@ class Dialog(object):
         # type: () -> None
         pass
     
-    def yesno(self, heading, line1, line2="", line3="", nolabel="", yeslabel="",
+    def yesno(self, heading, line1, nolabel="", yeslabel="",
                 autoclose=0):
-        # type: (str_type, str_type, str_type, str_type, str_type, str_type, int) -> bool
+        # type: (str_type, str_type, str_type, str_type, int) -> bool
         """
         **Yes / no dialog**
 
         The Yes / No dialog can be used to inform the user about questions and get the answer.
 
         :param heading: string or unicode - dialog heading. 
-        :param line1: string or unicode - line #1 multi-line text. 
-        :param line2: [opt] string or unicode - line #2 text. 
-        :param line3: [opt] string or unicode - line #3 text. 
+        :param line1: string or unicode - line #1 multi-line text.
         :param nolabel: [opt] label to put on the no button. 
         :param yeslabel: [opt] label to put on the yes button. 
         :param autoclose: [opt] integer - milliseconds to autoclose dialog.
             (default=do not autoclose)
         :return: Returns True if 'Yes' was pressed, else False.
-
-        It is preferred to only use line1 as it is actually a multi-line text.
-        In this case line2 and line3 must be omitted.
 
         Added new option **autoclose**.
 
@@ -2136,8 +2131,8 @@ class Dialog(object):
         """
         return [0]
     
-    def ok(self, heading, line1, line2="", line3=""):
-        # type: (str_type, str_type, str_type, str_type) -> bool
+    def ok(self, heading, line1):
+        # type: (str_type, str_type) -> bool
         """
         OK dialog
 
@@ -2145,13 +2140,8 @@ class Dialog(object):
         of the user by press from OK required.
 
         :param heading: string or unicode - dialog heading. 
-        :param line1: string or unicode - line #1 multi-line text. 
-        :param line2: [opt] string or unicode - line #2 text. 
-        :param line3: [opt] string or unicode - line #3 text. 
+        :param line1: string or unicode - line #1 multi-line text.
         :return: Returns True if 'Ok' was pressed, else False.
-
-        It is preferred to only use line1 as it is actually a multi-line text.
-        In this case line2 and line3 must be omitted.
 
         Example::
 
@@ -2468,19 +2458,15 @@ class DialogProgress(object):
         # type: () -> None
         pass
     
-    def create(self, heading, line1="", line2="", line3=""):
-        # type: (str_type, str_type, str_type, str_type) -> None
+    def create(self, heading, line1=""):
+        # type: (str_type, str_type) -> None
         """
         Create and show a progress dialog.
 
         :param heading: string or unicode - dialog heading. 
         :param line1: [opt] string or unicode - line #1 multi-line text. 
-        :param line2: [opt] string or unicode - line #2 text. 
-        :param line3: [opt] string or unicode - line #3 text.
 
-        It is preferred to only use line1 as it is actually a multi-line text.
-        In this case line2 and line3 must be omitted. Use update() to update
-        lines and progressbar.
+        Use update() to update lines and progressbar.
 
         Example::
 
@@ -2489,18 +2475,13 @@ class DialogProgress(object):
         """
         pass
     
-    def update(self, percent, line1="", line2="", line3=""):
-        # type: (int, str_type, str_type, str_type) -> None
+    def update(self, percent, line1=""):
+        # type: (int, str_type) -> None
         """
         Updates the progress dialog.
 
         :param percent: integer - percent complete. (0:100) 
-        :param line1: [opt] string or unicode - line #1 multi-line text. 
-        :param line2: [opt] string or unicode - line #2 text. 
-        :param line3: [opt] string or unicode - line #3 text.
-
-        It is preferred to only use line1 as it is actually a multi-line text.
-        In this case line2 and line3 must be omitted.
+        :param line1: [opt] string or unicode - line #1 multi-line text.
 
         Example::
 
@@ -2531,68 +2512,7 @@ class DialogProgress(object):
             if (pDialog.iscanceled()): return
         """
         return True
-    
 
-class DialogBusy(object):
-    """
-    Kodi's busy dialog class
-
-    .. warning:: removed, usage results in nop!
-    """
-    
-    def __init__(self):
-        # type: () -> None
-        pass
-    
-    def create(self):
-        # type: () -> None
-        """
-        Create and show a busy dialog.
-
-        Use update() to update the progressbar.
-
-        removed, usage results in nop!
-
-        Example::
-
-            dialog = xbmcgui.DialogBusy()
-            dialog.create()
-        """
-        pass
-    
-    def update(self, percent):
-        # f(int) -> None
-        """
-        Updates the busy dialog.
-
-        :param percent: integer - percent complete. (-1:100)
-
-        If percent == -1 (default), the progressbar will be hidden.
-
-        .. warning:: removed, usage results in nop!
-        """
-        pass
-    
-    def close(self):
-        # type: () -> None
-        """
-        Close the progress dialog.
-
-        .. warning:: removed, usage results in nop!
-        """
-        pass
-    
-    def iscanceled(self):
-        # f() -> bool
-        """
-        Checks if busy dialog is canceled.
-
-        :return: True if the user pressed cancel.
-
-        .. warning:: removed, usage results in nop!
-        """
-        return True
-    
 
 class DialogProgressBG(object):
     """
